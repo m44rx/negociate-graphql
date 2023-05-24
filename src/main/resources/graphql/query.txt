@@ -1,0 +1,46 @@
+query{
+  findCourseById(courseId:"2"){
+    __typename
+    name
+    category
+    teacher
+    id
+  }
+}
+
+query{
+  findAllCourses{
+    id
+    name
+    category
+    teacher
+  }
+}
+
+# Notese que el uso de comas ',' para separar los campos de name, category es indiferente
+mutation{
+  createCourse( inputCourse : {
+    name :"Java"
+    category:"programacion"
+    teacher:"Julia Toledo"
+  }){
+    name
+    category
+    teacher
+  }
+}
+
+# Si agregamos otro objeto dentro de otro, para acceder a su informacion debemos solo indicar que campos del nuevo objeto deseamos traer o mostrar
+
+query{
+  findAllStudents{
+    name
+    lastName
+    course {
+      id
+      teacher
+      __typename
+    }
+    __typename
+  }
+}
